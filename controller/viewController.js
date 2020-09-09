@@ -4,7 +4,7 @@ var router = express.Router();
 // var axios = require('axios');
 
 router.get('/', function(req, res) {
-  res.render('index', { title: 'index22' });
+  res.render('index', { title: 'index222222' });
 });
 
 module.exports = router;
