@@ -1,8 +1,9 @@
-const mysql = require('mysql2/promise')
-const {info} = require('../mysql/mysql')
+const mongoose = require('mongoose');
+const {info} = require('../database/mongodb')
 
-const pool = mysql.createPool(info)
+mongoose.connect(info,{
+    useNewUrlParser:true, useUnifiedTopology:true,useCreateIndex:true,useFindAndModify:false
+}).then(()=>console.log('mongoDB connected..'))
+.catch(err=>console.log(err))
 
-const data = pool.query('set names utf8;')
-
-module.exports = pool
+module.exports = mongoose;
