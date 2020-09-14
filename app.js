@@ -4,9 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var view = require('./controller/viewController');
-var api = require('./controller/apiController');
-var db_config = require('./config/database.js');
+var view = require('./controller/viewCtl');
+var api = require('./controller/apiCtl');
 var app = express();
 
 // view engine setup

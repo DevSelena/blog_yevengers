@@ -2,10 +2,23 @@ const mongoose = require("../config/database");
 var autoIncrement = require("mongoose-auto-increment");
 autoIncrement.initialize(mongoose);
 
-const boardSchma = mongoose.Schema({
-    idx : {
-        type :Number
+let commentSchma = mongoose.Schema({
+    name : {
+        type : String
     },
+    password : {
+        type : String
+    },
+    comment :{
+        type: String
+    },
+    comment_date:{
+        type : Date,
+        default:Date.now()
+    }
+});
+
+let boardSchma = mongoose.Schema({
     name : {
         type : String
     },
@@ -18,11 +31,14 @@ const boardSchma = mongoose.Schema({
     content : {
         type : String
     },
-    comment :{
-        type: Object
+    board_date : {
+        type : Date,
+        default : Date.now()
+    },
+    comments : {
+        comment_data : [commentSchma]
     }
 });
-  
-boardSchma.plugin(autoIncrement.plugin,{ model : 'Board', field : 'idx', startAt : 1 });
+
 
 module.exports = mongoose.model("Board", boardSchma);
