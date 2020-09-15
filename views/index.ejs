@@ -1,36 +1,7 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <label>name</label><input id="name"/>
-    <label>password</label><input type="password" id="password"/>
-    <label>title</label><input id="title"/>
-    <label>content</label><textarea id="content"></textarea>
-    <button id="write">전송</button>
-  <script>
-    document.getElementById('write').onclick = function(){
-      $.ajax({
-        url: '/api/board/save',
-        type: 'POST',
-        data: {
-          name : document.getElementById('name').value,
-          password : document.getElementById('password').value,
-          title : document.getElementById('title').value,
-          content : document.getElementById('content').value,
-        },
-        success: function(data) {
-          console.log(data)
-        },
-        error: function(err){
-          console.log(err)
-        }
-      });
-    }
-  </script>
-  </body>
-</html>
+<%- include('head')%>
+</head>
+<body>
+  
+</body>
+<%- include('footer')%>
+
