@@ -6,7 +6,7 @@
   <div class="indexBox">
     <div class="title">YEVENGERS PORTFOLIO</div>
     <ul class="memberList">
-      <li class="JE">
+      <li class="JE clickOn" onclick="MakersClick(this,'JE')">
         <img src="./image/JE.png" />
         <div class="text_box">
           <div class="duties">Web Designer</div>
@@ -15,8 +15,9 @@
             <button type="button" class="more">More</button>
           </div>
         </div>
+        <button id="PdtProcessBtn" type="button" >제작과정 보기</button>
       </li><!--
-      --><li class="YJ">
+      --><li class="YJ clickOn" onclick="MakersClick(this,'YJ')">
         <img src="./image/YJ.png" />
         <div class="text_box">
           <div class="duties">Front end Developer</div>
@@ -25,8 +26,9 @@
             <button type="button" class="more">More</button>
           </div>
         </div>
+        <button id="PdtProcessBtn" type="button" >제작과정 보기</button>
       </li><!--
-      --><li class="SH">
+      --><li class="SH clickOn" onclick="MakersClick(this,'SH')">
         <img src="./image/SH.png" />
         <div class="text_box">
           <div class="duties">Back end Developer</div>
@@ -35,11 +37,12 @@
             <button type="button" class="more">More</button>
           </div>
         </div>
+        <button id="PdtProcessBtn" type="button" >제작과정 보기</button>
       </li>
     </ul>
   </div>
 </div>
 </body>
-
+<script src="/js/index.js"></script>
 <%- include('footer')%>
 
