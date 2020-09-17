@@ -1,6 +1,7 @@
 const mongoose = require("../config/database");
-var autoIncrement = require("mongoose-auto-increment");
-autoIncrement.initialize(mongoose);
+const moment = require('moment');
+const tz = require('moment-timezone');
+moment.tz.setDefault("Asia/Seoul");
 
 let commentSchma = mongoose.Schema({
     name : {
@@ -13,8 +14,8 @@ let commentSchma = mongoose.Schema({
         type: String
     },
     comment_date:{
-        type : Date,
-        default:Date.now()
+        type : String,
+        default: moment().format('YYYY-MM-DD HH:mm:ss')
     }
 });
 
@@ -32,11 +33,11 @@ let boardSchma = mongoose.Schema({
         type : String
     },
     board_date : {
-        type : Date,
-        default : Date.now()
+        type : String,
+        default: moment().format('YYYY-MM-DD HH:mm:ss')
     },
     comments : {
-        comment_data : [commentSchma]
+        type : [commentSchma]
     }
 });
 
