@@ -4,9 +4,9 @@
 <div class="container index">
   <div class="side_txt"></div>
   <div class="indexBox">
-    <div class="title">YEVENGERS PORTFOLIO</div>
-    <ul class="memberList">
-      <li class="JE">
+    <div class="title" id="title">YEVENGERS PORTFOLIO</div>
+    <ul class="memberList" id="memberList">
+      <li class="JE Maker_clickOn" onclick="MakersClick(this,'JE','Web Designer')">
         <img src="./image/JE.png" />
         <div class="text_box">
           <div class="duties">Web Designer</div>
@@ -15,8 +15,9 @@
             <button type="button" class="more">More</button>
           </div>
         </div>
+        <button id="PdtProcessBtn" type="button">제작과정 보기</button>
       </li><!--
-      --><li class="YJ">
+      --><li class="YJ Maker_clickOn" onclick="MakersClick(this,'YJ','Front end Developer')">
         <img src="./image/YJ.png" />
         <div class="text_box">
           <div class="duties">Front end Developer</div>
@@ -25,8 +26,9 @@
             <button type="button" class="more">More</button>
           </div>
         </div>
+        <button id="PdtProcessBtn" type="button">제작과정 보기</button>
       </li><!--
-      --><li class="SH">
+      --><li class="SH Maker_clickOn" onclick="MakersClick(this,'SH','Back end Developer')">
         <img src="./image/SH.png" />
         <div class="text_box">
           <div class="duties">Back end Developer</div>
@@ -35,11 +37,15 @@
             <button type="button" class="more">More</button>
           </div>
         </div>
+        <button id="PdtProcessBtn" type="button">제작과정 보기</button>
+      </li><!--
+      --><li class="markerInfo" id="SHInfo">
+        <%- include('info/sh')%>
       </li>
     </ul>
   </div>
 </div>
 </body>
-
+<script src="/js/index.js"></script>
 <%- include('footer')%>
 
