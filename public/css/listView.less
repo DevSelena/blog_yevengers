@@ -3,18 +3,8 @@
     .visualBox{
         height: 70vh; position: relative;
         @media @tablet{ height: 60vh; }
-
-        .header{
-            position: absolute; left: 50%; top: 0px; width: 1280px; height: 60px; transform: translateX(-50%); padding: 10px 0px;
-            @media @tablet{ width: 100%; padding: 10px }
-
-            .logo{float: left; color: #494a4f; font-family: 'Cafe24Ohsquare'; font-size: 1.875em; line-height: 40px;}
-            
-            .writeBtn{
-                float: right; width: 168px; height: 40px; border-radius: 40px; border: 1px solid #494a4f;
-                &:hover{border: 1px solid #99c4c8; background: #99c4c8; color: #fff;}
-            }
-        }
+        
+        .header{position: fixed;}
 
         .mainVisual{height: 100%; background: url('../image/mainVisual.jpg')no-repeat 30% 0%; background-size: cover;}
 

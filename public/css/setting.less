@@ -10,8 +10,17 @@
 }
 
 .button{
+    &.small{
+        width: 170px; height: 40px;
+    }
+    &.full{
+        width: 100%;
+    }
+    &.style1{
+        background: #99c4c8; color: #fff; font-size: 1.25em;
+    }
     &:active{
-        box-shadow: 0 0 6px rgba(0,0,0,.2) inset;
+        box-shadow: 0 0 8px rgba(0,0,0,.2) inset;
     }
 }
 
@@ -21,13 +30,34 @@
 
 .inputBoxouter{
     border-radius: 6px;
-    padding: 0 1.5%;
+    &.ib{display:inline-block}
     .inputBox{
-        width: 100%; height: 100%;
+        width: 100%; height: 100%; background: #fff; border: 1px solid #bbb; padding: 0 1.5%;
+        &.wd170{width: 170px}
+        &.ht40{height: 40px;}
         input{width: 100%; height: 100%;}
         &.icon{
             input{width: calc(100% - 34px);}
             button{display: inline-block; width: 30px; height: 30px; margin-left: 4px; vertical-align: middle;}
+        }
+    }
+}
+
+.header{
+    position: absolute; left: 0%; top: 0px; width: 100%; z-index: 1;
+    &.on{ background: #fff; border-bottom:1px solid #ccc;}
+    .headerInner{
+        width: 1200px; height: 60px; margin:0 auto; padding: 10px 0px;
+        @media @tablet{ width: 100%; padding: 10px }
+
+        .logo{
+            float: left;
+            a{ color: #494a4f; font-family: 'Cafe24Ohsquare'; font-size: 1.875em; line-height: 40px;}
+        }
+        
+        .writeBtn{
+            float: right; width: 168px; height: 40px; border-radius: 40px; border: 1px solid #494a4f; text-align: center; line-height: 40px; cursor: pointer;
+            &:hover{border: 1px solid #99c4c8; background: #99c4c8; color: #fff;}
         }
     }
 }
