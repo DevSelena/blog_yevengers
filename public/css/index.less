@@ -6,6 +6,11 @@ body{
     position: relative;
     &.index{
         min-height: 100vh;
+        &::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
     }
     @media @tablet{
         font-size: 14px;
@@ -169,7 +174,7 @@ body{
                     padding: 0 80px 100px;
                 }
                 @media @mobile{
-                    padding: 0 20px 80px;
+                    padding: 0 20px;
                 }
             }
         }
@@ -291,6 +296,32 @@ body{
 
         }
 
+    }
+
+}
+#allView{
+    font-family: 'Cafe24Ohsquare';
+    display: block;
+    width: 180px;
+    border-bottom: 4px solid #364648;
+    position: fixed;
+    right: 0;
+    bottom: 45px;
+    font-size: 1.25em;
+    padding: 4px 0;
+    @media @mobile{
+        float: right;
+        position: initial;
+    }
+    &::after{
+        content: '';
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background: url('../image/view_icon.png')no-repeat 0 0;
+        background-size: cover;
+        vertical-align: middle;
+        margin-left: 10px;
     }
 }
 

@@ -1,0 +1,73 @@
+<%- include('head')%>
+</head>
+<body>
+<div class="container containview">
+    <%- include('header')%>
+    
+    <div class="detailView">
+        <div class="detailHeader">
+            <h2 class="title">디자인 그리드 활용법</h2>
+            <div class="bottomBox">
+                <div class="left">
+                    <div class="user">elissa</div>
+                    <div class="day">2020.09.15</div>
+                </div>
+                <div class="right">
+                    <a href="">목록</a>
+                    <button type="button">수정</button>
+                    <button type="button">삭제</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="detailBody">상세내용 기입하고 사진들도 넣어서 블로그 꾸미기</div>
+        
+        <div class="detailFooter">
+            <ul class="hashTagBox">
+                <li class="hashTag">#디자인</li>
+            </ul>
+
+            <ul class="commentBox">
+                <li class="commentList">
+                    <div class="userLogo">
+                        <img src="./image/userlogo1.png" alt="유저로고" />
+                    </div>
+                    <div class="textBox">
+                        <div class="userName">Jaden</div>
+                        <div class="writeDay">2020.09.15</div>
+                        <div class="textContent">댓글내용 기입하고 상세내용도 기입할수있습니다.</div>
+                    </div>
+                    <div class="btnbox">
+                        <button type="button">수정</button>
+                        <button type="button">삭제</button>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="commentWrite">
+                <div class="inputBoxouter ib">
+                    <div class="inputBox ht40 wd170">
+                        <input type="text" placeholder="이름" maxlength="5" />
+                    </div>
+                </div><!--
+                --><div class="inputBoxouter ib">
+                    <div class="inputBox ht40 wd170">
+                        <input type="password" placeholder="비밀번호" maxlength="12" />
+                    </div>
+                </div>
+
+                <div class="txtareaBox">
+                    <textarea name="" id="commentWriteText" placeholder="여러분의 소중한 댓글을 입력해주세요."style="resize: none;"></textarea>
+                </div>
+
+                <button type="button" class="register button style1 small">댓글달기</button>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+</body>
+<script src="/js/view.js"></script>
+<%- include('footer')%>
