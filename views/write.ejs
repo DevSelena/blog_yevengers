@@ -1,17 +1,52 @@
 <%- include('head')%>
+<!-- include libraries(jQuery, bootstrap) -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<!-- include summernote css/js -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 </head>
 <body>
 <div class="container index">
 
     <h1> 글쓰기 // 완료 </h1>
-    <label>board_name</label><input id="board_name"/>
-    <label>board_password</label><input type="password" id="board_password"/>
-    <label>board_title</label><input id="board_title"/>
-    <label>board_content</label><textarea id="board_comment"></textarea>
+    <label>board_name</label><input id="board_name"/><br/>
+    <label>board_password</label><input type="password" id="board_password"/><br/>
+    <label>board_title</label><input id="board_title"/><br/>
+    <label>board_content</label><br/>
+    <!-- <textarea id="board_comment"></textarea> -->
+    <textarea id="board_comment" name="editordata"></textarea>
     <button id="board_btn">게시글 전송</button>
 
 
 </div>
+<script>
+    $(document).ready(function() {
+       $('#board_comment').summernote();
+    })
+
+    document.getElementById('board_btn').onclick = function(){
+      $.ajax({
+        url: '/api/board/save',
+        type: 'POST',
+        data: {
+          name : document.getElementById('board_name').value,
+          password : document.getElementById('board_password').value,
+          title : document.getElementById('board_title').value,
+          content : document.getElementById('board_comment').value,
+        },
+        success: function(data) {
+          console.log(data)
+        },
+        error: function(err){
+          console.log(err)
+        }
+      });
+    }
+
+</script>
 </body>
 
 <%- include('footer')%>
