@@ -38,7 +38,7 @@
             <input type="password" placeholder="비밀번호" maxlength="12" id="board_password"/>
         </div>
     </div>
-    <button type="button" class="button style1 small" id="board_btn">게시글 등록</button>
+    <button type="button" class="button style1 small" id="board_btn" onclick="boardBtn()">게시글 등록</button>
   </div>
 
 </div>
@@ -47,26 +47,7 @@
        $('#board_comment').summernote();
     })
 
-    document.getElementById('board_btn').onclick = function(){
-      $.ajax({
-        url: '/api/board/save',
-        type: 'POST',
-        data: {
-          name : document.getElementById('board_name').value,
-          password : document.getElementById('board_password').value,
-          title : document.getElementById('board_title').value,
-          content : document.getElementById('board_comment').value,
-        },
-        success: function(data) {
-          console.log(data)
-        },
-        error: function(err){
-          console.log(err)
-        }
-      });
-    }
-
 </script>
 </body>
-
+<script src="/js/write.js"></script>
 <%- include('footer')%>
