@@ -47,20 +47,19 @@
             <div class="commentWrite">
                 <div class="inputBoxouter ib">
                     <div class="inputBox ht40 wd170">
-                        <input type="text" placeholder="이름" maxlength="5" />
+                        <input type="text" placeholder="이름" maxlength="5" id="comment_name" />
                     </div>
                 </div><!--
                 --><div class="inputBoxouter ib">
                     <div class="inputBox ht40 wd170">
-                        <input type="password" placeholder="비밀번호" maxlength="12" />
+                        <input type="password" placeholder="비밀번호" maxlength="12" id="comment_password"/>
                     </div>
                 </div>
-
                 <div class="txtareaBox">
-                    <textarea name="" id="commentWriteText" placeholder="여러분의 소중한 댓글을 입력해주세요."style="resize: none;"></textarea>
+                    <textarea name="" id="comment_content" placeholder="여러분의 소중한 댓글을 입력해주세요."style="resize: none;"></textarea>
                 </div>
 
-                <button type="button" class="register button style1 small">댓글달기</button>
+                <button type="button" class="register button style1 small" id="comment_btn">댓글달기</button>
 
             </div>
 
@@ -69,5 +68,27 @@
 
 </div>
 </body>
+<script>
+
+    document.getElementById('comment_btn').onclick = function(){
+      $.ajax({
+        url: '/api/comment/save',
+        type: 'POST',
+        data: {
+          board_id : "5f65782f0fd6aa12245aea02",
+          name : document.getElementById('comment_name').value,
+          password : document.getElementById('comment_password').value,
+          content : document.getElementById('comment_content').value,
+        },
+        success: function(data) {
+          console.log(data)
+        },
+        error: function(err){
+          console.log(err)
+        }
+      });
+    }
+
+</script>
 <script src="/js/view.js"></script>
 <%- include('footer')%>
