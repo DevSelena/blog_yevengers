@@ -6,23 +6,30 @@ const Joi = require('@hapi/joi');
 
 board.get('/find', async (req, res) => {
     try{
-        Board.find({}, function (err, board) {
-            return res.status(200).send(result(true,200,"성공",{ data: board }))
-        });
+        if(req.query.board_id){
+            Board.findOne({_id: req.query.board_id}, function (err, board) {
+                return res.status(200).send(result(true,200,"성공",{ data: board }))
+            })
+        }else{
+            Board.find({}, function (err, board) {
+                return res.status(200).send(result(true,200,"성공",{ data: board }))
+            });
+        }
     }catch(err){
         return res.status(400).send(result(true,500,"통신 에러",err))
     }
 });
 
-board.get('/find/:id', function (req, res) {
-    try{
-        Board.findOne({_id: req.params.id}, function (err, board) {
-            return res.status(200).send(result(true,200,"성공",{ data: board }))
-        })
-    }catch(err){
-        return res.status(400).send(result(true,500,"통신 에러",err))
-    }
-});
+// board.get('/find/:id', function (req, res) {
+//     try{
+//         console.log(req.params)
+//         Board.findOne({_id: req.params.board_id}, function (err, board) {
+//             return res.status(200).send(result(true,200,"성공",{ data: board }))
+//         })
+//     }catch(err){
+//         return res.status(400).send(result(true,500,"통신 에러",err))
+//     }
+// });
 
 
 // 본인확인

@@ -12,7 +12,6 @@ window.addEventListener('DOMContentLoaded', function(){
                 // }
 
                 let img = (list.content.split('<img src=').length >=2) ? "<img src="+list.content.split('<img src=')[1] : `<img src="./image/mainVisual.jpg" alt="Thumbnail" />`;
-
                 
                 let img_remove = list.content.replace(/<(\/img|img)([^>]*)>/gi,""); 
                 const li =  '<li class="list">\n'+

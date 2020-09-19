@@ -6,11 +6,11 @@
     
     <div class="detailView">
         <div class="detailHeader">
-            <h2 class="title">디자인 그리드 활용법</h2>
+            <h2 class="title" id="title"></h2>
             <div class="bottomBox">
                 <div class="left">
-                    <div class="user">elissa</div>
-                    <div class="day">2020.09.15</div>
+                    <div class="user" id="name"></div>
+                    <div class="day" id="board_date"></div>
                 </div>
                 <div class="right">
                     <a href="">목록</a>
@@ -20,7 +20,7 @@
             </div>
         </div>
         
-        <div class="detailBody">상세내용 기입하고 사진들도 넣어서 블로그 꾸미기</div>
+        <div class="detailBody" id="contents"></div>
         
         <div class="detailFooter">
             <ul class="hashTagBox">
@@ -69,6 +69,27 @@
 </div>
 </body>
 <script>
+
+    window.addEventListener('DOMContentLoaded', function(){
+        $.ajax({
+        url: '/api/board/find',
+        type: 'GET',
+        data: {
+          board_id : "5f65782f0fd6aa12245aea02",
+        },
+        success: function(data) {
+            document.getElementById("name").innerHTML = data.data.data.name;
+            document.getElementById("title").innerHTML = data.data.data.title;
+            document.getElementById("contents").innerHTML = data.data.data.content;
+            
+            console.log(data.data.data.comments)
+        },
+        error: function(err){
+          console.log(err)
+        }
+      });
+    })
+
 
     document.getElementById('comment_btn').onclick = function(){
       $.ajax({
