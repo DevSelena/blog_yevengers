@@ -1,7 +1,10 @@
 .container.containview{
     .header{position: fixed};
 
-    .detailView{ max-width: 1200px; margin:0px auto; padding: 180px 0 100px; }
+    .detailView{ 
+        max-width: 1200px; margin:0px auto; padding: 180px 0 100px; 
+        @media @tablet{padding: 100px 20px 20px}
+    }
     
     .detailHeader{
         .title{ font-size: 1.875em; }
@@ -41,6 +44,7 @@
             
                 .userLogo{
                     width: 50px; height: 50px;
+                    @media @mobile{width: 30px; height: 30px;}
                     img{ width: 100%; }
                 }
 
@@ -48,6 +52,7 @@
                     flex: 1;
                     padding: 0 20px;
                     font-size: 1.125em;
+                    @media @mobile{ padding: 0 10px; }
                     > div + div{ margin-top: 1em; }
                     .userName{ font-weight: bold;}
                     .writeDay{color: #bbb;}
@@ -68,8 +73,11 @@
             }
 
             .inputBoxouter{
+                @media @mobile{width:calc((100% - 20px) / 2)}
                 & + .inputBoxouter{margin-left: 20px;}
-                .inputBox{ padding: 0 10px; }
+                .inputBox{ 
+                    padding: 0 10px;
+                }
             }
 
             .txtareaBox{
@@ -79,17 +87,20 @@
                 }
             }
 
-            .register{
+            button.register{
                 float: right; margin-top: 20px;
+                @media @mobile{
+                    width: 100%;
+                }
             }
         }
         
     }
     #PwdCheck{
-        width: 300px;
+        width: 360px;
         background: #fff;
         border-radius: 10px;
-        padding: 20px 10px;
+        padding: 30px 40px;
         .txt{
             text-align: center;
             font-size: 1.25em;

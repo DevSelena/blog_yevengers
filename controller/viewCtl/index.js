@@ -19,7 +19,11 @@ router.get('/write', function(req, res){
 })
 
 router.get('/view', function(req, res){
-  res.render('view', { title: 'YEVENGERS-view', board_id : req.query.board_id})
+  const boader_id = req.query.board_id;
+  axios.get('http://localhost:8001/api/board/find?board_id='+boader_id)
+  .then(response => {
+    res.render('view', { title: 'YEVENGERS-view', data : response.data.data.data})
+  })
 })
 
 router.get('/test', function(req, res){
