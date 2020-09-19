@@ -39,3 +39,19 @@ window.addEventListener('DOMContentLoaded', function(){
         }
     })
 })
+
+document.getElementById('search_btn').onclick = function(){
+    $.ajax({
+        url: '/api/board/search',
+        type: 'GET',
+        data : {
+            search : document.getElementById('search').value
+        },
+        success: function(data){
+            console.log(data)
+        },
+        error: function(err) {
+            console.log(err)
+        }
+    })
+}

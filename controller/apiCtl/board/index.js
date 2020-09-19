@@ -116,16 +116,18 @@ board.delete('/remove', async (req, res) => {
 });
 
 // 검색하기
-board.post('/search', async (req, res) => {
+board.get('/search', async (req, res) => {
     try{
-        //   board_data.save(function (err) {
-        //     if(err){
-        //       console.log(err);
-        //       return res.status(200).send(result(true,400,"실패",err))
-        //     }
-            return res.status(200).send(result(true,200,"성공","" ))
-            // return res.status(200).send(result(true,200,"성공",{ board: board_data } ))
-        // });
+        let search  = req.query.search;
+        console.log(search)
+        Board.find({'content' : { $regex : search } } ).exec(function (err, board) {
+            if(err){
+              console.log(err);
+              return res.status(200).send(result(true,400,"실패",err))
+            }
+            // return res.status(200).send(result(true,200,"성공","" ))
+            return res.status(200).send(result(true,200,"성공",{ board: board} ))
+        });
 
     }catch(err){
         return res.status(400).send(result(true,500,"통신 에러",err))
