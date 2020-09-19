@@ -11,7 +11,7 @@ board.get('/find', async (req, res) => {
                 return res.status(200).send(result(true,200,"성공",{ data: board }))
             })
         }else{
-            Board.find({}, function (err, board) {
+            Board.find({}).sort({_id:-1}).exec(function (err,board){
                 return res.status(200).send(result(true,200,"성공",{ data: board }))
             });
         }

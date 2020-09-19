@@ -69,13 +69,12 @@
 </div>
 </body>
 <script>
-
     window.addEventListener('DOMContentLoaded', function(){
         $.ajax({
         url: '/api/board/find',
         type: 'GET',
         data: {
-          board_id : "5f65782f0fd6aa12245aea02",
+          board_id : "<%- board_id%>",
         },
         success: function(data) {
             document.getElementById("name").innerHTML = data.data.data.name;
@@ -83,7 +82,7 @@
             document.getElementById("contents").innerHTML = data.data.data.content;
             // console.log(data.data.data.comments)
             data.data.data.comments.forEach(function(list) {
-                console.log(list)
+                // console.log(list)
                 const li = '<li class="commentList">\n'+
                             '<div class="userLogo">\n'+
                             '<img src="./image/userlogo1.png" alt="유저로고" />\n'+
@@ -114,13 +113,13 @@
         url: '/api/comment/save',
         type: 'POST',
         data: {
-          board_id : "5f65782f0fd6aa12245aea02",
+          board_id : "<%- board_id%>",
           name : document.getElementById('comment_name').value,
           password : document.getElementById('comment_password').value,
           content : document.getElementById('comment_content').value,
         },
         success: function(data) {
-          console.log(data)
+        //   console.log(data)
           location.reload()
         },
         error: function(err){

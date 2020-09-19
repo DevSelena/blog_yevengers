@@ -19,9 +19,7 @@ router.get('/write', function(req, res){
 })
 
 router.get('/view', function(req, res){
-  console.log(22222222222222222222222222222)
-  console.log(req.route.query.board_id)
-  res.render('view', { title: 'YEVENGERS-view' })
+  res.render('view', { title: 'YEVENGERS-view', board_id : req.query.board_id})
 })
 
 router.get('/test', function(req, res){
