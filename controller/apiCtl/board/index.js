@@ -25,6 +25,25 @@ board.get('/find/:id', function (req, res) {
 });
 
 
+// 본인확인
+board.post('/confirm', async (req, res) => {
+    try{
+        Board.find({_id : req.body.board_id}, async function (err, board) {
+
+            if(err) return res.status(400).send(result(true,400,"보드 실패",err))
+
+            if(board[0].password == req.body.password) {
+                return res.status(200).send(result(true,200,"비밀번호가 일치합니다.",""))
+            }else{
+                return res.status(200).send(result(true,200,"비밀번호가 일치하지 않습니다.",""))
+            }
+
+        });
+    }catch(err){
+        return res.status(400).send(result(true,400,"실패",err))
+    }
+});
+
 board.post('/save', async (req, res) => {
     try{
         let board_data = new Board();
@@ -49,7 +68,7 @@ board.post('/save', async (req, res) => {
 board.put('/update', async (req, res) => {
     try{
 
-        Board.update({ _id: req.body._id }, { $set: { name : req.body.name, title : req.body.title, content : req.body.content}  }, (err, data) => {
+        Board.update({ _id: req.body.board_id }, { $set: { title : req.body.title, content : req.body.content}  }, (err, data) => {
             
             if(err) return res.status(400).send(result(false,400,"수정 실패",err))
             
@@ -67,15 +86,11 @@ board.put('/update', async (req, res) => {
 
 board.delete('/remove', async (req, res) => {
     try{
-        Board.findOne({_id : req.body._id, password : req.body.password},(err,board) =>{
-
-            if(err)  return res.status(400).send(result(true,400,"비밀번호를 확인해주세요. ",""))
-
-            Board.remove({ _id : req.body._id}, (err, data) => {
-                if(err) return res.status(400).send(result(true,400,"삭제 성공 ",err))
-                return res.status(200).send(result(true,200,"삭제 성공 ",data))
-            })            
+        Board.removeOne({ _id : req.body.board_id}, (err, data) => {
+            if(err) return res.status(400).send(result(true,400,"삭제 성공 ",err))
+            return res.status(200).send(result(true,200,"삭제 성공 ",data))
         })
+
     }catch(err){
         return res.status(400).send(result(true,500,"통신 에러",err))
     }
