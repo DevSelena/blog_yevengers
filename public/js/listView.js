@@ -4,6 +4,7 @@ window.addEventListener('DOMContentLoaded', function(){
         type: 'get',
         success: function(data){           
             data.data.data.forEach(function(list) {
+<<<<<<< Updated upstream
                 // let img = "";
                 // if(list.content.split('<img src=').length >=2){
                 //     img = "<img src="+list.content.split('<img src=')[1]
@@ -17,6 +18,13 @@ window.addEventListener('DOMContentLoaded', function(){
                 const li =  '<li class="list">\n'+
                                 '<div class="imgBox">\n'+
                                     img +'\n'+
+=======
+                const aaa = list.content.split(<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>);
+                console.log(aaa);
+                const li =  '<li class="list">\n'+
+                                '<div class="imgBox">\n'+
+                                    '<img src="'+!list.content.split('src=')[1]+'" alt="Thumbnail" />\n'+
+>>>>>>> Stashed changes
                                 '</div>\n'+
                                 '<div class="txtBox">\n'+
                                     '<div class="top">\n'+
