@@ -15,11 +15,12 @@ router.get('/listview', function(req, res) {
 });
 
 router.get('/write', function(req, res){
-  console.log(req)
   res.render('write', { title: 'YEVENGERS-write' })
 })
 
 router.get('/view', function(req, res){
+  console.log(22222222222222222222222222222)
+  console.log(req.route.query.board_id)
   res.render('view', { title: 'YEVENGERS-view' })
 })
 
