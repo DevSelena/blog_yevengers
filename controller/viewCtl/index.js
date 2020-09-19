@@ -1,17 +1,21 @@
-var express = require('express');
-var router = express.Router();
+let express = require('express');
+let router = express.Router();
+let axios = require('axios');
 
-// var axios = require('axios');
 
 router.get('/', function(req, res) {
   res.render('index', { title: 'YEVENGERS' });
 });
 
 router.get('/listview', function(req, res) {
-  res.render('listView', { title: 'YEVENGERS-list' });
+  axios.get('http://localhost:8001/api/board/find')
+  .then(response => {
+    res.render('listView', { title: 'YEVENGERS-list', data: response.data.data.data });
+  })
 });
 
 router.get('/write', function(req, res){
+  console.log(req)
   res.render('write', { title: 'YEVENGERS-write' })
 })
 
