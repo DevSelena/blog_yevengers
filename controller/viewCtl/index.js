@@ -19,6 +19,10 @@ router.get('/view', function(req, res){
   res.render('view', { title: 'YEVENGERS-view' })
 })
 
+router.get('/test', function(req, res){
+  res.render('test', { title: 'api test list' })
+})
+
 
 
 module.exports = router;
