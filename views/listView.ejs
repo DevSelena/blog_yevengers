@@ -1,6 +1,6 @@
 <%- include('head')%>
 </head>
-<body>
+<body class="color1">
 <div class="container listView">
 
     <div class="visualBox" id="visualBox">
@@ -9,10 +9,10 @@
         <div class="mainVisual"></div>
         
         <div class="inputBoxouter">
-            <form class="inputBox icon">
-                <input type="text" placeholder="검색어를 입력해주세요." id="search" autofocus /><!--
-                --><button type="button" class="search button2" id="search_btn"></button>
-            </form>
+            <div class="inputBox icon" >
+                <input type="text" placeholder="검색어를 입력해주세요." id="search" autofocus onkeypress="if( event.keyCode==13 ){search_btn.click()}"/><!--
+                --><button type="button" class="search button2" id="search_btn" onclick="listSearch()"></button>
+            </div>
         </div>
 
         <ul class="nav">
@@ -22,7 +22,7 @@
             <li><button>#Etc.</button></li>
         </ul>
     </div>
-
+    <% if(data){ %>
     <ul class="listBox" id="listBox">
         <% data.forEach(function(list) { %>
             <% let img = "" %>
@@ -51,7 +51,9 @@
             </li>
         <% }); %>
     </ul>
-
+    <% } else {%>
+    <h3>검색결과가 없습니다.</h3>
+    <% } %>
 </div>
 </body>
 <script src="/js/listView.js"></script>

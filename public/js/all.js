@@ -1,8 +1,9 @@
 //header영역
 window.addEventListener( 'scroll', function () {
-    let scrollLocation = document.documentElement.scrollTop;
-    console.log(scrollLocation);
-    scrollLocation > 0 ? document.getElementById('header').classList.add('on') :  document.getElementById('header').classList.remove('on') 
+    if(location.pathname !== '/write'){
+        let scrollLocation = document.documentElement.scrollTop;
+        scrollLocation > 0 ? document.getElementById('header').classList.add('on') :  document.getElementById('header').classList.remove('on') 
+    }
 });
 
 //모달창 닫기
@@ -16,6 +17,7 @@ function modalClose(){
 
     document.getElementById('body').style.overflow="auto";
 }
+
 //background으로 닫기
 document.getElementById('background').addEventListener('click',function (){
     modalClose();

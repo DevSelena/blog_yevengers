@@ -8,10 +8,22 @@ router.get('/', function(req, res) {
 });
 
 router.get('/listview', function(req, res) {
-  axios.get('http://localhost:8001/api/board/find')
-  .then(response => {
-    res.render('listView', { title: 'YEVENGERS-list', data: response.data.data.data });
-  })
+  const searchData = req.query.search
+  searchData ?
+    axios.get('http://localhost:8001/api/board/search',{params: {'search':searchData}})
+    .then(response => {
+      const datacheck = response.data.data.board
+      const data = (datacheck.length ? datacheck : false)
+      res.render('listView', { title: 'YEVENGERS-list', data: data });
+    })
+    .catch(() => {
+      const data = false
+      res.render('listView', { title: 'YEVENGERS-list', data: data });
+    })
+  : axios.get('http://localhost:8001/api/board/find')
+    .then(response => {
+      res.render('listView', { title: 'YEVENGERS-list', data: response.data.data.data });
+    });
 });
 
 router.get('/write', function(req, res){
