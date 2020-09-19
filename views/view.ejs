@@ -27,8 +27,8 @@
                 <li class="hashTag">#디자인</li>
             </ul>
 
-            <ul class="commentBox">
-                <li class="commentList">
+            <ul class="commentBox" id="commentBox">
+                <!-- <li class="commentList">
                     <div class="userLogo">
                         <img src="./image/userlogo1.png" alt="유저로고" />
                     </div>
@@ -41,7 +41,7 @@
                         <button type="button">수정</button>
                         <button type="button">삭제</button>
                     </div>
-                </li>
+                </li> -->
             </ul>
 
             <div class="commentWrite">
@@ -81,8 +81,26 @@
             document.getElementById("name").innerHTML = data.data.data.name;
             document.getElementById("title").innerHTML = data.data.data.title;
             document.getElementById("contents").innerHTML = data.data.data.content;
-            
-            console.log(data.data.data.comments)
+            // console.log(data.data.data.comments)
+            data.data.data.comments.forEach(function(list) {
+                console.log(list)
+                const li = '<li class="commentList">\n'+
+                            '<div class="userLogo">\n'+
+                            '<img src="./image/userlogo1.png" alt="유저로고" />\n'+
+                            '</div>\n'+
+                            '<div class="textBox">\n'+
+                                '<div class="userName">'+list.name+'</div>\n'+
+                                '<div class="writeDay">'+list.comment_date+'</div>\n'+
+                                '<div class="textContent">'+list.comment+'</div>\n'+
+                            '</div>\n'+
+                            '<div class="btnbox">\n'+
+                                '<button type="button">수정</button>\n'+
+                                '<button type="button">삭제</button>\n'+
+                            '</div>\n'+
+                        '</li>\n';
+
+                $('#commentBox').append(li)
+            });
         },
         error: function(err){
           console.log(err)
@@ -103,6 +121,7 @@
         },
         success: function(data) {
           console.log(data)
+          location.reload()
         },
         error: function(err){
           console.log(err)

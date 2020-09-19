@@ -119,8 +119,7 @@ board.delete('/remove', async (req, res) => {
 board.get('/search', async (req, res) => {
     try{
         let search  = req.query.search;
-        console.log(search)
-        Board.find({'content' : { $regex : search } } ).exec(function (err, board) {
+        Board.find().or([{'title':{ $regex : search }}, {'content':{ $regex : search }}]).exec(function (err, board) {
             if(err){
               console.log(err);
               return res.status(200).send(result(true,400,"실패",err))
