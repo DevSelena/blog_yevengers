@@ -19,7 +19,7 @@ router.get('/write', function(req, res){
 })
 
 router.get('/view', function(req, res){
-  res.render('view', { title: 'YEVENGERS-view' })
+  res.render('view', { title: 'YEVENGERS-view', board_id : req.query.board_id})
 })
 
 router.get('/test', function(req, res){
