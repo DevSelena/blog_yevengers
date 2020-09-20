@@ -14,8 +14,8 @@
                 </div>
                 <div class="right">
                     <a href="/listView">목록</a>
-                    <button type="button" onclick="passwrodCheck()">수정</button>
-                    <button type="button">삭제</button>
+                    <button type="button" val="modi" onclick="passwrodCheck(this)">수정</button>
+                    <button type="button" val="del" onclick="passwrodCheck(this)">삭제</button>
                 </div>
             </div>
         </div>
@@ -41,8 +41,8 @@
                         <div class="textContent"><%- list.comment %></div>
                     </div>
                     <div class="btnbox">
-                        <button type="button">수정</button>
-                        <button type="button">삭제</button>
+                        <button type="button" val="comment_modi" _id="<%- list._id%>" onclick="passwrodCheck(this)">수정</button>
+                        <button type="button" val="comment_del" _id="<%- list._id%>"onclick="passwrodCheck(this)">삭제</button>
                     </div>
                 </li>
                 <% }) %>
@@ -87,9 +87,10 @@
             </div>
         </div>
 
-        <button type="button" class="button full style1">수정하기</button>
+        <button type="button" class="button full style1" id="board_confirm_btn"></button>
     </div>
 
+    
 </div>
 </body>
 <script src="/js/view.js"></script>

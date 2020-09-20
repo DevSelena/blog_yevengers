@@ -34,7 +34,7 @@ comment.post('/confirm', async (req, res) => {
             }).then((confirm_result)=>{
                 if(confirm_result) return res.status(200).send(result(true,200,"비밀번호가 일치합니다.",""))
 
-                return res.status(200).send(result(true,200,"비밀번호가 일치하지 않습니다.",""))
+                return res.status(200).send(result(false,400,"비밀번호가 일치하지 않습니다.",""))
             })
         });
     }catch(err){

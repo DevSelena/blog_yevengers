@@ -42,7 +42,7 @@ board.post('/confirm', async (req, res) => {
             if(board[0].password == req.body.password) {
                 return res.status(200).send(result(true,200,"비밀번호가 일치합니다.",""))
             }else{
-                return res.status(200).send(result(true,200,"비밀번호가 일치하지 않습니다.",""))
+                return res.status(200).send(result(false,400,"비밀번호가 일치하지 않습니다.",""))
             }
 
         });
@@ -93,13 +93,13 @@ board.put('/update', async (req, res) => {
 
 board.delete('/remove', async (req, res) => {
     try{
-        Board.removeOne({ _id : req.body.board_id}, (err, data) => {
+        Board.deleteOne({ _id : req.body.board_id}, (err, data) => {
             if(err) return res.status(400).send(result(true,400,"삭제 성공 ",err))
             return res.status(200).send(result(true,200,"삭제 성공 ",data))
         })
 
     }catch(err){
-        return res.status(400).send(result(true,500,"통신 에러",err))
+        return res.status(400).send(result(false,400,"통신 에러",err))
     }
 });
 
