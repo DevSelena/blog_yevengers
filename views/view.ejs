@@ -28,7 +28,7 @@
             </ul>
 
             <ul class="commentBox" id="commentBox">
-                <% data.comments.forEach(function(list) { %>
+                <% data.comments.forEach(function(list,index) { %>
                 <% let numRandom = Math.random(); %>
                 <% let numRandom2 = Math.floor( numRandom * 5 + 1 ) %>
                 <li class="commentList">
@@ -39,9 +39,16 @@
                         <div class="userName"><%- list.name%></div>
                         <div class="writeDay"><%- list.comment_date %></div>
                         <div class="textContent"><%- list.comment %></div>
+                        <div class="txtareaBox">
+                            <textarea name="" id="comment_modi_content" placeholder="여러분의 소중한 댓글을 입력해주세요."style="resize: none;"></textarea>
+                        </div>
+                        <div class="btnbox">
+                            <button type="button" class="button style2 small" id="comment_modiBtnCancel" onclick="commentModifyCancel('<%- index %>')">수정취소</button>
+                            <button type="button" class="button style1 small" id="comment_modiBtn" onclick="commentModifySuccess('<%- list._id%>','<%- index %>')">수정완료</button>
+                        </div>
                     </div>
                     <div class="btnbox">
-                        <button type="button" val="comment_modi" _id="<%- list._id%>" onclick="passwrodCheck(this)">수정</button>
+                        <button type="button" val="comment_modi" _id="<%- list._id%>" onclick="passwrodCheck(this,'<%- index %>')">수정</button>
                         <button type="button" val="comment_del" _id="<%- list._id%>"onclick="passwrodCheck(this)">삭제</button>
                     </div>
                 </li>
@@ -63,7 +70,7 @@
                     <textarea name="" id="comment_content" placeholder="여러분의 소중한 댓글을 입력해주세요."style="resize: none;"></textarea>
                 </div>
 
-                <button type="button" class="register button style1 small" id="comment_btn">댓글달기</button>
+                <button type="button" class="register button style1 small" id="comment_btn" onclick="commentBtn()">댓글달기</button>
 
             </div>
 
@@ -87,7 +94,7 @@
             </div>
         </div>
 
-        <button type="button" class="button full style1" id="board_confirm_btn"></button>
+        <button type="button" class="button full style1" id="board_confirm_btn" onclick="board_confirm_btn(this)"></button>
     </div>
 
     

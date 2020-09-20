@@ -15,6 +15,10 @@
     min-height: 500px;
     max-height: 500px;
   }
+  .modal-backdrop{
+    z-index: 1;
+    background: transparent;
+  }
 </style>
 </head>
 <body class="color1">
@@ -22,7 +26,7 @@
 <div class="containerWrite">
   <div class="inputBoxouter board_nameBox ht40" >
     <div class="inputBox">
-        <input type="text" placeholder="제목" maxlength="15" id="board_title" />
+        <input type="text" placeholder="제목" maxlength="40" id="board_title" />
     </div>
   </div>
   <textarea id="board_comment" name="editordata"></textarea>
@@ -43,10 +47,9 @@
 
 </div>
 <script>
-    $(document).ready(function() {
-       $('#board_comment').summernote();
-    })
-
+  $(document).ready(function() {
+     $('#board_comment').summernote();
+  })
 </script>
 </body>
 <script src="/js/write.js"></script>

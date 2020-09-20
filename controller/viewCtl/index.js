@@ -34,6 +34,7 @@ router.get('/view', function(req, res){
   const boader_id = req.query.board_id;
   axios.get('http://localhost:8001/api/board/find?board_id='+boader_id)
   .then(response => {
+    console.log(response.data.data.data)
     res.render('view', { title: 'YEVENGERS-view', data : response.data.data.data})
   })
 })

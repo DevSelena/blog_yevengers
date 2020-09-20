@@ -3,7 +3,7 @@ function boardBtn(){
     const board_comment = document.getElementById('board_comment').value;
     const board_name = document.getElementById('board_name').value;
     const board_password = document.getElementById('board_password').value;
-    console.log(board_title, board_comment, board_name, board_password)
+
     if(board_title === ""){
         alert('제목을 입력하세요');
         document.getElementById('board_title').focus()
@@ -24,6 +24,7 @@ function boardBtn(){
         document.getElementById('board_password').focus()
         return
     }
+
     $.ajax({
       url: '/api/board/save',
       type: 'POST',
@@ -42,4 +43,5 @@ function boardBtn(){
         console.log(err)
       }
     });
+    
   }
