@@ -5,52 +5,57 @@
 
 <!-- include summernote css/js -->
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<script src="/js/summernoteLang.js"></script>
 <style>
   a{color: #2B2B2B;}
   a:hover{
 
     text-decoration: none;
   }
-  .note-editable{
-    min-height: 500px;
-    max-height: 500px;
-  }
   .modal-backdrop{
     z-index: 1;
     background: transparent;
+  }
+  .note-editor.note-frame .note-editing-area .note-editable{
+    overflow-x: hidden;
   }
 </style>
 </head>
 <body class="color1">
 <%- include('header')%>
 <div class="containerWrite">
-  <div class="inputBoxouter board_nameBox ht40" >
-    <div class="inputBox">
-        <input type="text" placeholder="제목" maxlength="40" id="board_title" />
+  <div class="inputBoxouter board_nameBox" >
+    <div class="inputBox ht40">
+        <input type="text" placeholder="제목" maxlength="40" id="board_title" value="<%- data ? data.title : '' %>"/>
     </div>
   </div>
-  <textarea id="board_comment" name="editordata"></textarea>
+  <textarea id="board_comment" name="editordata"><%- data ? data.content : '' %></textarea>
 
   <div class="writeFooter">
-    <div class="inputBoxouter ib ht40 wd170">
-      <div class="inputBox">
+    <div class="inputBoxouter ib wd170" style="display: <%- data ?  'none' : '' %>">
+      <div class="inputBox ht40">
           <input type="text" placeholder="작성자" maxlength="5" id="board_name" />
       </div>
     </div><!--
-    --><div class="inputBoxouter ib ht40 wd170">
-        <div class="inputBox">
-            <input type="password" placeholder="비밀번호" maxlength="12" id="board_password"/>
+    --><div class="inputBoxouter ib wd170" style="display: <%- data ?  'none' : '' %>">
+        <div class="inputBox ht40">
+            <input type="password" placeholder="비밀번호" maxlength="12" id="board_password" />
         </div>
     </div>
-    <button type="button" class="button style1 small" id="board_btn" onclick="boardBtn()">게시글 등록</button>
+    <button type="button" class="button style1 small" id="board_btn" onclick="<%- data ?  'boardModifyBtn()' : 'boardBtn()' %>"><%- data ?  '게시글 수정' : '게시글 등록' %></button>
   </div>
 
 </div>
-<script>
-  $(document).ready(function() {
-     $('#board_comment').summernote();
-  })
-</script>
 </body>
+<script>
+  $('#board_comment').summernote({
+    lang: "ko-KR",					// 한글 설정
+    minHeight: 500,             // 최소 높이
+    maxHeight: 500,             // 최대 높이
+    focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부2
+    placeholder: '내용을 입력하세요'	//placeholder 설정      
+  });
+</script>
 <script src="/js/write.js"></script>
+
 <%- include('footer')%>

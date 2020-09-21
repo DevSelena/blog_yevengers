@@ -40,11 +40,11 @@
                         <div class="writeDay"><%- list.comment_date %></div>
                         <div class="textContent"><%- list.comment %></div>
                         <div class="txtareaBox">
-                            <textarea name="" id="comment_modi_content" placeholder="여러분의 소중한 댓글을 입력해주세요."style="resize: none;"></textarea>
+                            <textarea placeholder="여러분의 소중한 댓글을 입력해주세요." style="resize: none;"></textarea>
                         </div>
                         <div class="btnbox">
-                            <button type="button" class="button style2 small" id="comment_modiBtnCancel" onclick="commentModifyCancel('<%- index %>')">수정취소</button>
-                            <button type="button" class="button style1 small" id="comment_modiBtn" onclick="commentModifySuccess('<%- list._id%>','<%- index %>')">수정완료</button>
+                            <button type="button" class="button style2 small" onclick="commentModifyCancel('<%- index %>')">수정취소</button>
+                            <button type="button" class="button style1 small" onclick="commentModifySuccess('<%- list._id%>','<%- index %>')">수정완료</button>
                         </div>
                     </div>
                     <div class="btnbox">
@@ -56,13 +56,13 @@
             </ul>
 
             <div class="commentWrite">
-                <div class="inputBoxouter ib ht40 wd170">
-                    <div class="inputBox">
+                <div class="inputBoxouter ib wd170">
+                    <div class="inputBox ht40">
                         <input type="text" placeholder="이름" maxlength="5" id="comment_name" />
                     </div>
                 </div><!--
-                --><div class="inputBoxouter ib ht40 wd170">
-                    <div class="inputBox">
+                --><div class="inputBoxouter ib wd170">
+                    <div class="inputBox ht40">
                         <input type="password" placeholder="비밀번호" maxlength="12" id="comment_password"/>
                     </div>
                 </div>
@@ -88,10 +88,11 @@
 
         <div class="txt">패스워드를 입력하세요</div>
 
-        <div class="inputBoxouter ht40">
-            <div class="inputBox">
+        <div class="inputBoxouter ">
+            <div class="inputBox ht40">
                 <input type="password" placeholder="비밀번호" maxlength="12" id="passwordCheck"/>
             </div>
+            <div class="inputError" id="pwdCheckError">비밀번호가 틀렸습니다.</div>
         </div>
 
         <button type="button" class="button full style1" id="board_confirm_btn" onclick="board_confirm_btn(this)"></button>

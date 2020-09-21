@@ -1,3 +1,4 @@
+//게시글등록
 function boardBtn(){
     const board_title = document.getElementById('board_title').value;
     const board_comment = document.getElementById('board_comment').value;
@@ -36,12 +37,30 @@ function boardBtn(){
       },
       success: function(data) {
         console.log(data)
-        alert('등록되었습니다.');
-        location.href = location.origin + "/listview";
+        location.href = location.origin + "/view?board_id="+data.data.board._id;
       },
       error: function(err){
         console.log(err)
       }
     });
-    
   }
+
+//게시글수정
+function boardModifyBtn(){
+  $.ajax({
+    url: '/api/board/update',
+    type: 'PUT',
+    data: {
+      board_id : location.search.split('=')[1],
+      title : document.getElementById('board_title').value,
+      content : document.getElementById('board_comment').value,
+    },
+    success: function(data) {
+      console.log(data);
+      location.href = location.origin + "/view" + location.search;
+    },
+    error: function(err){
+      console.log(err)
+    }
+  });
+}

@@ -3,6 +3,8 @@ let selCommentList; //select comentlist
 
 //보드 수정/삭제 시 패스워드 확인
 function passwrodCheck(value, index){
+    document.getElementById('pwdCheckError').style.display = 'none';
+
     const board_confirm_btn = document.getElementById('board_confirm_btn')
     board_confirm_btn.innerHTML = value.getAttribute('val') === 'modi' || value.getAttribute('val') === 'comment_modi' ? '수정하기' : '삭제하기'
 
@@ -23,7 +25,6 @@ function passwrodCheck(value, index){
 function board_confirm_btn(onthis){
   let val = onthis.getAttribute('val');
   let _id = onthis.getAttribute('_id');
-  
   let url = (val == 'del' || val == "modi") ? '/api/board/confirm' : '/api/comment/confirm';
 
   let data = {
@@ -41,18 +42,20 @@ function board_confirm_btn(onthis){
       data: data,
       success: function(data) {
         console.log(data)
-        document.getElementById('body').style.overflow = 'auto';
         if(data.status == 400){ // 비밀번호 일치 하지 않을 때 
-          alert(data.msg)
+          document.getElementById('pwdCheckError').style.display = 'block';
+          document.getElementById('passwordCheck').value = '';
+          document.getElementById('passwordCheck').focus();
         }else if(data.status == 200){
+          document.getElementById('body').style.overflow = 'auto';
           if(val=='del'){ 
             // 게시글 삭제 완료
             board_delete();
           }else if(val == "modi"){
             // 게시글 수정으로 이동 미완성
-
+            location.href = location.origin + "/write" + location.search;
           }else if(val == "comment_modi"){
-            // 코멘트 수정되게 이동 미완성
+            // 코멘트 수정되게 이동 완성
             document.getElementById('background').style.display = "none";
             document.getElementById('PwdCheck').style.display = "none";
             commentModifyReady()
@@ -153,6 +156,10 @@ function commentModifyReady(){
 function commentModifySuccess(Id,Index){
   const commentListArray = document.getElementsByClassName('commentList');
   const textareaValue = commentListArray[Index].childNodes[3].childNodes[7].childNodes[1].value;
+  if(!textareaValue){
+    alert('내용을 입력하세요.');
+    return ;
+  }
   $.ajax({
     url: '/api/comment/update',
     type: 'PUT',

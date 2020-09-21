@@ -1,4 +1,11 @@
 //header영역
+window.addEventListener('load',function(){
+    if(location.pathname !== '/write'){
+        let scrollLocation = document.documentElement.scrollTop;
+        scrollLocation > 0 ? document.getElementById('header').classList.add('on') :  document.getElementById('header').classList.remove('on') 
+    }
+});
+
 window.addEventListener( 'scroll', function () {
     if(location.pathname !== '/write'){
         let scrollLocation = document.documentElement.scrollTop;
